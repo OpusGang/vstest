@@ -19,8 +19,7 @@ vstest:
 - creates a logfile in the testing folder where it appends all encoding logs from the codec.
 - enables cleaning of test encodes.
 
-<details><summary>`python vstest.py -h`</summary>
-<p>
+`python vstest.py -h`
 ```sh
 usage: vstest.py [-h] [-codec CODEC] [-script SCRIPT] [-folder FOLDER] [-multipass] [-predef PREDEF] [-require REQUIRE] [-verbose] [-sim] [-owrite] [-remove] [-clean] [-gencomp]
                  [-extract EXTRACT] [-editor EDITOR]
@@ -42,8 +41,6 @@ optional arguments:
   -extract EXTRACT  Choose how to extract frames from clip. Should be <length>:<every>:<offset>
   -editor EDITOR    Choose your prefered vapoursynth editor, named as you would call it from commandline. Default: vsedit
 ```
-</p>
-</details>
 
 
 
@@ -136,8 +133,7 @@ Mainly for debug purposes:
 - `-verbose` will display detailed information
 - `-sim` is a simulation mode that print the commands it would have executed and set the verbose mode on
 
-<details><summary>`python vstest.py -codec x264 -multipass --bitrate 8000 --bframes 5 --ipratio '[1.2/1.4/0.1]' --pbratio '[1.1/1.3/0.1]' -require 'pbratio<ipratio' -sim`</summary>
-<p>
+`python vstest.py -codec x264 -multipass --bitrate 8000 --bframes 5 --ipratio '[1.2/1.4/0.1]' --pbratio '[1.1/1.3/0.1]' -require 'pbratio<ipratio' -sim`
 ```sh
 +USER ARGUMENTS
  +vstest options:  clean=False, codec='x264', cond='pbratio<ipratio', customset=None, editor='vsedit', folder=None, multipass=True, owrite=False, remove=False, script=None, sim=True, verbose=True
@@ -208,8 +204,6 @@ $ vspipe --y4m /home/user/encoding/scripts/tests.vpy - | x264 --demuxer y4m - --
 > Pass 2
 $ vspipe --y4m /home/user/encoding/scripts/tests.vpy - | x264 --demuxer y4m - --ipratio 1.4 --pbratio 1.3 --bitrate 8000 --bframes 5 --preset veryslow --profile high --threads auto --level 4.1 --b-adapt 2 --min-keyint 25 --vbv-bufsize 78125 --vbv-maxrate 62500 --rc-lookahead 240 --me umh --direct auto --subme 11 --trellis 2 --no-dct-decimate --no-fast-pskip --deblock -3:-3 --qcomp 0.6 --aq-mode 3 --aq-strength 0.8 --merange 32 --no-mbtree --psy-rd 1:0 --output /home/user/encoding/tests/ipratio.pbratio/ipratio_1.4_pbratio_1.3.mkv --pass 2 --stats x264.stats 
 ```
-</p>
-</details>
 
 ## Adding a new codec
 
@@ -223,7 +217,9 @@ vstest comes with x264, x265, SvtAv1EncApp and rav1e predefined. To use a new co
 	'out_opt': '<output option>',
 	'multipass_opts': ['<codec options for pass 1>','<codec options for pass 2>','...'],
 	'custom_preset': [['preset1_name','preset1_opts'],['preset2_name','preset2_opts'],[...]]
-	'index':'<vapoursynth function for indexing>',
+	'index':' <vapoursynth function for indexing>',
+	'vbv_opts': <codec options to disable vbv>,
+	'num_frames_opt': <codec option to specify number of frames>,
 }
 ```
 
@@ -236,4 +232,6 @@ where:
 - `['<codec options for pass 1>','<codec options for pass 2>','...']` is a list of options which are respectively fed to the codec for the consecutive passes in `-multipass` mode. The number of elements in this list defines the number of passes.
 - `[['preset1_name','preset1_opts'],['preset2_name','preset2_opts'],[...]]` is a list of cutom presets. Each of them is a list which first item is the preset's name and second item is its settings
 - `<vapoursynth function for indexing>` is the function used to index the test encodes in the comparison script
+- `<codec options to disable vbv>` are the encoder's options to disable VBV, if applicable
+- `<codec option to specify number of frames>` is the encoder's option to specify number of frames to be encoded, if applicable
 
