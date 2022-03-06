@@ -235,3 +235,5 @@ where:
 - `<codec options to disable vbv>` are the encoder's options to disable VBV, if applicable
 - `<codec option to specify number of frames>` is the encoder's option to specify number of frames to be encoded, if applicable
 
+### Contact
+- **IRC Channel**: `#OpusGang` on `irc.libera.chat`
