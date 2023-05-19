@@ -24,7 +24,7 @@ x264 = {
     'out_opt': '--output',
     'codec_opts_def': '--preset veryslow --profile high --threads auto --level 4.1 --b-adapt 2 --min-keyint 25 --vbv-bufsize 78125 --vbv-maxrate 62500 --rc-lookahead 60 --me umh --direct auto --subme 11 --trellis 2 --no-dct-decimate --no-fast-pskip --deblock -3:-3 --qcomp 0.6 --ipratio 1.30 --pbratio 1.20 --aq-mode 3 --aq-strength 0.8 --merange 32 --no-mbtree --psy-rd 1:0 --bframes 16',
     'multipass_opts': ['--pass 1 --stats x264.stats','--pass 2 --stats x264.stats'],
-    'custom_preset': [['BR','--colormatrix bt709 --colorprim bt709 --transfer bt709'],['PAL','--colormatrix bt470bg --colorprim bt470bg --transfer bt470bg'],['NTSC','--colormatrix smpte170m --colorprim smpte170m --transfer smpte170m']],
+    'custom_preset': [['BR','--colormatrix bt709 --colorprim bt709 --transfer bt709'],['PAL','--colormatrix bt470bg --colorprim bt470bg --transfer smpte170m'],['NTSC','--colormatrix smpte170m --colorprim smpte170m --transfer smpte170m']],
     'index':'core.ffms2.Source',
     'vbv_opts':'--vbv-bufsize 0 --vbv-maxrate 0',
     'num_frames_opt': '--frames',
